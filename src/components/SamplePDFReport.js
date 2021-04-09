@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Doughnut, Bar, Pie } from "react-chartjs-2";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
@@ -75,10 +75,10 @@ const options = {
      
     
         labels: {
-          padding: 20,
+          padding: 15,
        
           fontColor: "#000",
-         fontSize: 18,
+         fontSize: 20,
        
         }
       }
@@ -131,19 +131,60 @@ const SamplePdfReport = () => {
         // const chartTwoBase =await chartTwo.toDataURL("image/png", 1.0);
  
         pdf.addImage(logoImage, "PNG", 10, 8, 25, 30);
-        pdf.addImage(ChartOneBase, 'png', 10, 70, 200,100);
-      
-        pdf.setTextColor(0, 0, 0);
-        pdf.setFontSize(15);
-        pdf.text(100, 265, "Channel Monitored:", "center");
-        pdf.setTextColor(0, 0, 0);
-      
-        pdf.setFontSize(12);
+        pdf.addImage(ChartOneBase, 'png', 10, 70, 180,90);
+        pdf.addPage()
+
+      console.log(pdf.heightLeft,"SPACE")
+    pdf.autoTable({
+      margin: { horizontal: 10, top: 10 },
+      startY: 20,
+      // columnStyles: { america: { align: 'center' } }, // European countries centered
+      body: [
+        {
+          sr: "1",
+          filename: `CSR test Shahbaz_2021_01_28_15_48_19.mp4.xml`,
+          clip: `CSR test Shahbaz`,
+          jobid: "Arshad Sharif",
+          starttime: "Thu, Jan 28, 2021 3:30:00 PM",
+          endtime: `Thu, Jan 28, 2021 3:30:00 PM`,
+        },
+        {
+          sr: "1",
+          filename: `CSR test Shahbaz_2021_01_28_15_48_19.mp4.xml`,
+          clip: `CSR test Shahbaz`,
+          jobid: "Arshad Sharif",
+          starttime: "Thu, Jan 28, 2021 3:30:00 PM",
+          endtime: `Thu, Jan 28, 2021 3:30:00 PM`,
+        },
+        {
+          sr: "1",
+          filename: `CSR test Shahbaz_2021_01_28_15_48_19.mp4.xml`,
+          clipname: `CSR test Shahbaz`,
+          jobid: "Arshad Sharif",
+          starttime: "Thu, Jan 28, 2021 3:30:00 PM",
+          endtime: `Thu, Jan 28, 2021 3:30:00 PM`,
+        },
         
-        pdf.text(100, 275, "Geo, ARY, Samaa, Hum, Dunya, 24, Abb Takk,:", "center");
-      
+      ],
+      columns: [
+        { header: "Sr", dataKey: "sr" },
+        { header: "First Name", dataKey: "filename" },
+        { header: "Clip Name", dataKey: "clipname" },
+        { header: "JobID", dataKey: "jobid" },
+        { header: "Start Time", dataKey: "starttime" },
+        { header: "End Time", dataKey: "endtime" },
+      ],
+      columnStyles: {
+        0: { cellWidth: 10 },
+        1: { cellWidth: 45 },
+        2: { cellWidth: 35 },
+        3: { cellWidth: 30 },
+        4: { cellWidth: 30 },
+      },
+    });
         pdf.save("canvas.pdf");
   }
+
     return ( 
         <>
     <div className='header'>

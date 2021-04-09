@@ -5,15 +5,17 @@ import StackedBar from './components/Stackbar';
 import GroupedBar from './components/GroupChart';
 import ProgramReport from './components/ProgramReport';
 import SamplePdfReport from './components/SamplePDFReport';
+import GuestApperance from './components/GuestAppearance';
 
 function App() {
   return (
     <div className="App">
       {/* <Charts/> */}
       {/* <StackedBar/> */}
-      <GroupedBar/>
+      {/* <GroupedBar/> */}
       {/* <ProgramReport/> */}
       {/* <SamplePdfReport/> */}
+      <GuestApperance/>
     </div>
   );
 }
