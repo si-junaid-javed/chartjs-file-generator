@@ -125,7 +125,7 @@ const GuestApperance = () => {
             //imahes
             pdf.setTextColor(0, 0, 0);
             pdf.setFontSize(15);
-            // pdf.text(100, 70, "Graphical Representation of Biasness of Anchors / Hosts (02-03-2021)", "center");
+             pdf.text(100, 65, "Appearance of Governments Financial Team (14-01-2021)", "center");
             const chartOne = document.getElementById("chart-one");
             const ChartOneBase = await chartOne.toDataURL("image/png", 1.0);
             // const chartTwo = document.getElementById("chart-two");
